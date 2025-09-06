@@ -35,15 +35,12 @@ h1 {
     background-color: white;
     height: 90%;
     width: 90%;
+    cursor: pointer;
 }
 
 .mini-div {
     border: 1px solid rgba(0,0,0,0.1);
     height: auto;
-}
-
-.draw {
-    background-color: black;
 }
 
 button {
@@ -54,6 +51,7 @@ button {
     border-radius: 15px;
     font-size: 14px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 #dimensions {
