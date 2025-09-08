@@ -3,6 +3,8 @@ let width = mainDiv.offsetWidth;
 const buttons = document.getElementById("options");
 let gridDimension = 16;
 let draw = 1;
+let drawMode = 1;
+let delChangeColor = document.querySelector("#colors div");
 
 function verifySize(questioningSize) {
     if(questioningSize > 100) {
@@ -41,23 +43,42 @@ function removeGrid() {
             mainDiv.removeChild(miniDiv);
         }
     }
+    createGrid();
 }
 
 createGrid();
 
+function randomColor() {
+    return Math.floor(Math.random() * 255) + 1;
+}
+
 function coloring(e) {
-    let opacity = e.target.style.opacity;
-    if(opacity && opacity < 1) {
-        e.target.style.opacity = `${Number(opacity) + 0.1}`;
+    if(drawMode === 1) {
+        const colorInput = document.getElementById("change-color");
+        let opacity = e.target.style.opacity;
+        e.target.style.backgroundColor = colorInput.value;
+        if(opacity && opacity < 1) {
+            e.target.style.opacity = `${Number(opacity) + 0.1}`;
+        }
+        else if(!opacity) {
+            e.target.style.opacity = "0.1";
+        }
     }
-    else if(!opacity) {
-        e.target.style.backgroundColor = "black";
-        e.target.style.opacity = "0.1";
+    else {
+        e.target.style.opacity = "1";
+        e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`; 
     }
 }
 
 function erase(e) {
-    e.target.style.backgroundColor = "white";
+    let opacity = e.target.style.opacity;
+    if(opacity > 0.1 && opacity !== 2 && drawMode === 1) {
+        e.target.style.opacity = `${Number(opacity) - 0.1}`;
+    }
+    else {
+        e.target.style.backgroundColor = "white";
+        e.target.style.opacity = "2";
+    }
 }
 
 mainDiv.addEventListener("mousedown", (e) => {
@@ -80,17 +101,21 @@ mainDiv.addEventListener("mouseup", () => {
     }
 });
 
+function changeToColors(eraser) {
+    draw = 1;
+    eraser.textContent = "Eraser";
+    mainDiv.style.cursor = "pointer";
+}
+
 options.addEventListener("click", (e) => {
     const selectedOption = e.target;
     switch (selectedOption.id) {
         case "create":
             if(!verifySize(document.querySelector("#x-axes").value)) return;
             removeGrid(); 
-            createGrid();
             break;
         case "clear":
             removeGrid();
-            createGrid();
             break;
         case "eraser":
             if(draw === 1) {
@@ -99,11 +124,22 @@ options.addEventListener("click", (e) => {
                 mainDiv.style.cursor = "cell";
             }
             else {
-                 draw = 1;
-                 selectedOption.textContent = "Eraser";
-                 mainDiv.style.cursor = "pointer";
+                 changeToColors(selectedOption);
             }
             break;
+        case "draw-mode":
+            removeGrid();
+            changeToColors(document.getElementById("eraser"));
+            if(drawMode === 1) {
+                drawMode = 0;
+                selectedOption.textContent = "Choose Colors";
+                delChangeColor.remove();
+            }
+            else {
+                drawMode = 1;
+                selectedOption.textContent = "Random Colors";
+                document.getElementById("colors").appendChild(delChangeColor);
+            }
     }
 });
 

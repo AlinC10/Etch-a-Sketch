@@ -13,22 +13,29 @@
 
         </div>
         <div id="options">
-            <div>
-                <button id="eraser">Eraser</button>
-            </div>
-            <div id="dimensions">
+            <button id="eraser">Eraser</button>
+            <div id="colors">
+                <button id="draw-mode">Random Colors</button>
                 <div>
-                    <label for="x-axex">Horizontal size:</label><br>
-                    <input type="number" id="x-axes" value="16">
-                </div>
-                <div>
-                    <label for="y-axes">Vertical size:</label><br>
-                    <input type="number" id="y-axes" value="16">
+                    <label for="change-color">Change Color: </label>
+                    <input type="color" id="change-color" value="#000000"></input>
                 </div>
             </div>
-            <div id="buttons">
-                <button id="create">Create Table</button>
-                <button id="clear">Clear Table</button>
+            <div id="table-options">
+                <div id="dimensions">
+                    <div>
+                        <label for="x-axex">Horizontal size:</label><br>
+                        <input type="number" id="x-axes" value="16">
+                    </div>
+                    <div>
+                        <label for="y-axes">Vertical size:</label><br>
+                        <input type="number" id="y-axes" value="16">
+                    </div>
+                </div>
+                <div id="buttons">
+                    <button id="create">Create Table</button>
+                    <button id="clear">Clear Table</button>
+                </div>
             </div>
         </div>
     </body>

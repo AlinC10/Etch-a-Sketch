@@ -23,10 +23,10 @@ h1 {
 #options {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 10px;
-    align-items:end;
 }
 
 #drawing-table {
@@ -39,14 +39,15 @@ h1 {
 }
 
 .mini-div {
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     height: auto;
+    opacity: 2;
 }
 
 button {
     background-color: rgb(255, 183, 0);
     color:rgb(148, 0, 0);
-    width: 100px;
+    width: 110px;
     height: 26px;
     border-radius: 15px;
     font-size: 14px;
@@ -72,4 +73,22 @@ input {
     font-weight: 600;
     width: 100px;
     text-align: center;
+}
+
+#colors {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#table-options {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+#change-color {
+    width: 30px;
 }
