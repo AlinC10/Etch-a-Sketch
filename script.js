@@ -1,7 +1,7 @@
 const mainDiv = document.querySelector("#drawing-table");
 let width = mainDiv.offsetWidth;
 const buttons = document.getElementById("options");
-let gridDimension = 16;
+let gridDimension;
 let draw = 1;
 let drawMode = 1;
 let delChangeColor = document.querySelector("#colors div");
@@ -142,14 +142,6 @@ options.addEventListener("click", (e) => {
             }
     }
 });
-
-
-window.addEventListener("resize", () => {
-    width = mainDiv.offsetWidth;
-    const pxSize = Number(width) / gridDimension;
-    removeGrid();
-    createGrid();
-})
 
 const dimensions = document.querySelector("#dimensions");
 dimensions.addEventListener("change", (e) => {
