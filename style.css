@@ -38,12 +38,6 @@ h1 {
     cursor: pointer;
 }
 
-.mini-div {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    height: auto;
-    opacity: 2;
-}
-
 button {
     background-color: rgb(255, 183, 0);
     color:rgb(148, 0, 0);
